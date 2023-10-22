@@ -44,11 +44,6 @@ main .program-row{
     gap: 1.6rem;
 }
 
-/****** for data display tally****/
-.datas{
-    display: none;
-}
-
 main .program-row > div{
     background: var(--color-white);
     padding: 0.8rem;

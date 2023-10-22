@@ -1,8 +1,17 @@
 {% extends "program.html" %}
 {% block results %}
 
+
+
+
+
+
+
+
 <div class="datas">
-    <h3>Kasarian</h3>
+    <div style="width: 100%; height: 10%;">
+        <canvas id="myChart"></canvas></div>
+    <div><h3>Kasarian</h3>
     <ul>
         <li>Count of Lalake: {{ kasarian_counts.get(0, 0) }}</li>
         <li>Count of Babae: {{ kasarian_counts.get(1, 0) }}</li>
@@ -87,7 +96,7 @@
     <ul>
         <li>Count of Oo: {{ Teknolohiya_counts.get(1, 0) }}</li>
     </ul>
-    
+</div>
     
 </div>
 
@@ -145,4 +154,43 @@
         </ul>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let labels = ['Serbisyon Pang-edukasyon', 'Pagsasanay Pangkabuhayan (Livelihood)', 'Pagtatanim', 'Serbisyon Pangkalusugan', 'Serbisyong Dental', 'Kaalamang Pangkultura', 'Varlus Formation at Moral Recovery', 'Ayudang Pagkain (Food Assistance)', 'Pagrerecycle', 'Pagsasanay Ukol sa Teknolohiya']
+    
+    let itemData =[1000, 520, 370, 1500, 20, 7, 215, 454, 235, 351]
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            data: itemData,
+            backgroundColor: 'rgb(66, 221, 245)',  // Fix 'rbg' to 'rgb'
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+    indexAxis: 'y',
+    responsive: true,  // Enable responsiveness
+            maintainAspectRatio: false,  // Disable aspect ratio maintenance
+            aspectRatio: 1,  // Set your desired aspect ratio (width:height)
+  }
+    };
+
+    const chart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+    });
+        
+    
+    
+    </script>
+    
+
 {% endblock %}

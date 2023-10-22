@@ -32,7 +32,6 @@ body {
     background-attachment: fixed;
     background-size: cover;
     height: 100vh;
-    backdrop-filter: blur(2px);
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
