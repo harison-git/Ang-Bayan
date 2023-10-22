@@ -1,0 +1,148 @@
+{% extends "program.html" %}
+{% block results %}
+
+<div class="datas">
+    <h3>Kasarian</h3>
+    <ul>
+        <li>Count of Lalake: {{ kasarian_counts.get(0, 0) }}</li>
+        <li>Count of Babae: {{ kasarian_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Edad</h3>
+    <ul>
+        <li>Count of 17-below: {{ edad_counts.get(0, 0) }}</li>
+        <li>Count of 18-24: {{ edad_counts.get(1, 0) }}</li>
+        <li>Count of 25-34: {{ edad_counts.get(2, 0) }}</li>
+        <li>Count of 35-44: {{ edad_counts.get(3, 0) }}</li>
+        <li>Count of 45-54: {{ edad_counts.get(4, 0) }}</li>
+        <li>Count of 55-64: {{ edad_counts.get(5, 0) }}</li>
+        <li>Count of 65-Above: {{ edad_counts.get(6, 0) }}</li>
+    </ul>
+    
+    <h3>Antas na tinapos</h3>
+    <ul>
+        <li>Count of Hindi nakapagtapos ng Elementarya: {{ antas_counts.get(0, 0) }}</li>
+        <li>Count of Elementarya: {{ antas_counts.get(1, 0) }}</li>
+        <li>Count of Hindi nakapagtapos ng Sekundarya: {{ antas_counts.get(2, 0) }}</li>
+        <li>Count of Sekundarya: {{ antas_counts.get(3, 0) }}</li>
+        <li>Count of Kolehiyo: {{ antas_counts.get(4, 0) }}</li>
+        <li>Count of Hindi nakapagtapos ng Kolehiyo: {{ antas_counts.get(5, 0) }}</li>
+        <li>Count of Masters Degree: {{ antas_counts.get(6, 0) }}</li>
+        <li>Count of Doctorate Degree: {{ antas_counts.get(7, 0) }}</li>
+        <li>Count of Hindi nakapag-aral: {{ antas_counts.get(8, 0) }}</li>
+    </ul>
+    
+    
+    <h3>Uri ng trabaho</h3>
+    <ul>
+        <li>Count of May Trabaho: {{ uri_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Serbisyong Pangedukasyon</h3>
+    <ul>
+        <li>Count of Oo: {{ Pangedukasyon_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Pagsasanay Pangkabuhayan (Livelihood)</h3>
+    <ul>
+        <li>Count of Oo: {{ Pangkabuhayan_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Pagtatanim</h3>
+    <ul>
+        <li>Count of Oo: {{ Pagtatanim_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Serbisyong Pangkalusugan</h3>
+    <ul>
+        <li>Count of Oo: {{ Pangkalusugan_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Serbisyong Dental</h3>
+    <ul>
+        <li>Count of Oo: {{ Dental_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Kaalamang Pangkultura</h3>
+    <ul>
+        <li>Count of Oo: {{ Pangkultura_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Values Formation at Moral Recovery</h3>
+    <ul>
+        <li>Count of Oo: {{ Values_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Ayudang Pagkain (Food Assistance)</h3>
+    <ul>
+        <li>Count of Oo: {{ Pagkain_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Pagrerecycle</h3>
+    <ul>
+        <li>Count of Oo: {{ Pagrerecycle_counts.get(1, 0) }}</li>
+    </ul>
+    
+    <h3>Pagsasanay Ukol sa Teknolohiya</h3>
+    <ul>
+        <li>Count of Oo: {{ Teknolohiya_counts.get(1, 0) }}</li>
+    </ul>
+    
+    
+</div>
+
+
+<div class="program-row">
+    
+    <div class="top1">
+                <ul>
+                    <li>
+                        <span class="prediction" data-program="{{ top1.program }}">
+                            {{ top1.program }} <div>({{ top1.quantity }} rows)</div>
+                        </span>
+                    </li>
+                    <li class="sub-programs">
+                        <ol class="subprogram-list">
+                            {% for sub_program in top1.sub_programs %}
+                            <li>{{ sub_program }}</li>
+                            {% endfor %}
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+<!--top2-->
+    <div class="top2">
+                  <ul>
+                    <li>
+                        <span class="prediction" data-program="{{ top1.program }}">
+                            {{ top2.program }} <div>({{ top2.quantity }} rows)</div>
+                        </span>
+                    </li>
+                    <li class="sub-programs">
+                        <ol class="subprogram-list">
+                            {% for sub_program in top2.sub_programs %}
+                            <li>{{ sub_program }}</li>
+                            {% endfor %}
+                        </ol>
+                    </li>
+                </ul>
+    </div>
+
+    <div class="top3">
+        <ul>
+            <li>
+                <span class="prediction" data-program="{{ top1.program }}">
+                    {{ top3.program }} <div>({{ top3.quantity }} rows)</div>
+                </span>
+            </li>
+            <li class="sub-programs">
+                <ol class="subprogram-list">
+                    {% for sub_program in top3.sub_programs %}
+                        <li>{{ sub_program }}</li>
+                    {% endfor %}
+                </ol>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
