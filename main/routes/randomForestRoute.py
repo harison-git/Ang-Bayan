@@ -11,12 +11,10 @@ randomForest_Route = Blueprint('randomForest', __name__)
 model_path_cesu = 'trained_modelCESU2.pkl'
 model = joblib.load(model_path_cesu)
 
-"""
+
 @randomForest_Route.errorhandler(Exception)
 def handle_error(e):
     return render_template("error.html"), 500  # You can customize the error page and status code
-
-"""
 
 
 
@@ -145,6 +143,44 @@ def programWithCSV2():
             Pagrerecycle_counts = df['Pagrerecycle'].value_counts().to_dict()  
             Teknolohiya_counts = df['Pagsasanay Ukol sa Teknolohiya'].value_counts().to_dict()  
 
+
+
+            #highest count 
+            # Define a dictionary with category counts
+            category_counts = {
+                "Pangedukasyon": Pangedukasyon_counts.get(1, 0),
+                "Pangkabuhayan": Pangkabuhayan_counts.get(1, 0),
+                "Pagtatanim": Pagtatanim_counts.get(1, 0),
+                "Pangkalusugan": Pangkalusugan_counts.get(1, 0),
+                "Dental": Dental_counts.get(1, 0),
+                "Pangkultura": Pangkultura_counts.get(1, 0),
+                "Values": Values_counts.get(1, 0),
+                "Pagkain": Pagkain_counts.get(1, 0),
+                "Pagrerecycle": Pagrerecycle_counts.get(1, 0),
+                "Teknolohiya": Teknolohiya_counts.get(1, 0)
+            }
+
+            # Find the category with the highest count
+            max_category = max(category_counts, key=category_counts.get)
+            highest_count = category_counts[max_category]
+
+            if max_category == "Pangedukasyon" or max_category == "Teknolohiya":
+                program_ces = "Literacy"
+            elif max_category == "Pangkabuhayan":
+                program_ces = "Socio-economic"
+            elif max_category == "Pagtatanim" or max_category == "Pagrerecycle":
+                program_ces = "Environmental Stewardship"
+            elif max_category == "Pangkalusugan" or max_category == "Dental":
+                program_ces = "Health and Wellness"
+            elif max_category == "Pangkultura":
+                program_ces = "Cultural Enhancement"
+            elif max_category == "Values":
+                program_ces = "Values Formation"
+            elif max_category == "Pagkain":
+                program_ces = "Disaster Management"   
+            else:
+                program_ces = "Gender Development"  
+
             return render_template("resultCSV.html",
                 top1=top_programs_with_subprograms[0] if len(top_programs_with_subprograms) >= 1 else {},
                 top2=top_programs_with_subprograms[1] if len(top_programs_with_subprograms) >= 2 else {},
@@ -162,6 +198,9 @@ def programWithCSV2():
                 Values_counts=Values_counts,
                 Pagkain_counts=Pagkain_counts,
                 Pagrerecycle_counts=Pagrerecycle_counts,
-                Teknolohiya_counts=Teknolohiya_counts)
+                Teknolohiya_counts=Teknolohiya_counts,
+                max_category = max_category,
+                highest_count=highest_count,
+                program_ces = program_ces)
         
     return render_template("program.html")

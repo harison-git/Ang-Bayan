@@ -55,6 +55,11 @@
     </div>
 </div>
 
+<div class="result">
+    <h1>The category with the highest number of requests is <span id="max_category">{{ max_category }}</span> with <span id="highest_count">{{ highest_count }}</span> requests.</h1>
+    <h1>Recommended Program: <b><span id="program_ces">{{ program_ces }}</span></b></h1>
+</div>
+
 <div class="datas">
 
     <div class="graph2">
@@ -334,7 +339,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: 'Estado ng Trabaho'
+                    text: 'Serbisyong Kailangan'
                 },
                 legend: {
                     display: false,

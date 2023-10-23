@@ -142,6 +142,26 @@ main .program-row > div:hover{
     box-shadow: none;
 }
 
+/* ---------- RESULT ----------------*/
+
+.result{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+}
+.result {
+    padding:1rem;
+    border-radius: var(--card-border-radius);
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+} 
+
+.result:hover {
+    box-shadow: none;
+}
+
 
 /* ------------------- MOBILE -------------------- */
 @media screen and (max-width: 760px){
