@@ -225,6 +225,7 @@ main .communityCard table tr:last-child td{
 }
 .communityCard .btn-add:hover{
     background-color: #05ae11;
+    cursor: pointer;
 
 }
 
@@ -267,7 +268,7 @@ main .communityCard table tr:last-child td{
     cursor: pointer;
     border-radius: 5px;
     position: absolute;
-    right: 2.5rem;
+    right: 3.5rem;
     bottom: 1rem;
 }
 

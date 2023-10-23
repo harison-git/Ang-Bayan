@@ -179,8 +179,8 @@ main .manageUser table tr:last-child td{
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
-    margin-left: 36rem;
-    margin-top: 0.5rem ;
+    position: relative;
+    left: 39.5rem;
 }
 
 .manageUser .btn-close:hover {

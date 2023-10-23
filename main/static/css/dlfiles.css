@@ -35,9 +35,16 @@ main .file-container{
     border-radius: 1rem;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
+    padding-bottom: 2.5rem;
  
 }
-
+hr{
+    width: 100%;
+    height: 0.5px;
+    background-color: #ababab;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
 .title{
     margin-bottom: 1rem;
     font-size: 1.5rem;
@@ -54,7 +61,6 @@ main .file-container:hover{
     background-color: #4b8ed7;
     color: #fff; /* White text color */
     border: none;
-    padding: 3px 6px; /* Adjust padding as needed */
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
@@ -100,6 +106,22 @@ main .file-container:hover{
 
 .table .btn-delete:hover {
     background-color: #ff3333; /* Red background color on hover */
+}
+
+/* upload BUTTON */
+.file-container .btn-submit{
+    background-color: #49a14f;
+    color: #fff;
+    padding: 4px 6px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 3.7rem;
+}
+
+.file-container .btn-submit:hover{
+    background-color: #05ae11;
+
 }
 
 @media screen and (max-width: 1200px){
