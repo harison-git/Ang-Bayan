@@ -114,6 +114,30 @@ main .file-container:hover{
 
 }
 
+
+.file-container td {
+    height: 2.8rem;
+    border-bottom: 1px solid lightgray;
+    color: var(--color-dark);
+}
+.file-container table tr:last-child td{
+    border: none;
+}
+.file-container td a {
+    padding: 4px 6px;
+    border: none;
+}
+.file-container td a:hover {
+    background-color: #49a14f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.file-container .file-td{
+    width: 49rem;
+}
+
 @media screen and (max-width: 1200px){
     .file-container{
         width: 40rem;

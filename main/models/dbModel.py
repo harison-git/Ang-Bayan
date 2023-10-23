@@ -35,6 +35,12 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     role = db.Column(db.String(255), nullable=False)
 
+# ----------------------- Upload Files ------------------------------------
+class Upload(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(50))
+    data = db.Column(db.LargeBinary)
+
 # Create the database tables
 with app.app_context():
     db.create_all()

@@ -1,7 +1,8 @@
 from flask import Blueprint, url_for, redirect, request, session, flash, render_template, jsonify, make_response, g
-from main.models.dbModel import User, Community, Program, Subprogram, Role
+from main.models.dbModel import User, Community, Program, Subprogram, Role, Upload
 from main import db
 from main import Form
+from flask import Response
 
 
 dbModel_route = Blueprint('dbModel', __name__)
@@ -344,9 +345,71 @@ def update_week():
     return jsonify({'message': 'Week column updated for the specified subprogram.'})
 
 # -------------------------   DL FILES
-@dbModel_route.route("/files")
+@dbModel_route.route('/files')
 def files():
     if 'user_id' not in session:
         flash('Please log in first.', 'error')
         return redirect(url_for('dbModel.login'))
-    return render_template("dlfiles.html")
+    upload_data = Upload.query.all()
+    return render_template("dlfiles.html", upload_data=upload_data)
+
+@dbModel_route.route('/uploadfile', methods=['POST'])
+def upload():
+    if 'file' in request.files:
+        file = request.files['file']
+        if file.filename != '':
+            # Read the file and insert it into the database
+            data = file.read()
+            upload_entry = Upload(filename=file.filename, data=data)
+            db.session.add(upload_entry)
+            db.session.commit()
+    return redirect(url_for('dbModel.files'))
+
+
+@dbModel_route.route('/view/<int:file_id>')
+def view(file_id):
+    upload_entry = Upload.query.get(file_id)
+    if upload_entry:
+        # Determine the content type based on the file extension
+        content_type = "application/octet-stream"
+        filename = upload_entry.filename.lower()
+
+        if filename.endswith((".jpg", ".jpeg", ".png", ".gif")):
+            content_type = "image"
+
+        # Serve the file with appropriate content type and Content-Disposition
+        response = Response(upload_entry.data, content_type=content_type)
+
+        if content_type.startswith("image"):
+            # If it's an image, set Content-Disposition to inline for display
+            response.headers["Content-Disposition"] = "inline"
+        else:
+            # For other types, set Content-Disposition to attachment for download
+            response.headers[
+                "Content-Disposition"] = f'attachment; filename="{upload_entry.filename}"'
+        if filename.endswith(".pdf"):
+            response = Response(upload_entry.data,
+                                content_type="application/pdf")
+        return response
+    return "File not found", 404
+
+@dbModel_route.route('/delete_file/<int:id>', methods=['GET'])
+def delete_file(id):
+    if 'user_id' not in session:
+        flash('Please log in first.', 'error')
+        return redirect(url_for('dbModel.login'))
+    
+    upload = Upload.query.get(id)
+    if upload:
+        try:
+            # Delete the user from the database
+            db.session.delete(upload)
+            db.session.commit()
+            flash('Account deleted successfully!', 'success')
+        except Exception as e:
+            db.session.rollback()
+            flash('An error occurred while deleting the account. Please try again.', 'error')
+            # You may want to log the exception for debugging purposes
+    else:
+        flash('User not found. Please try again.', 'error')
+    return redirect(url_for('dbModel.files'))

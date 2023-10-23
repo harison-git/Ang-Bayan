@@ -8,33 +8,26 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-            
                     <th>File Name</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
+                {% for file in upload_data %}
                 <tr>
-                    <td>Community Assessment Profiling.pdf</td>
+                    <td class="file-td"><a href="/view/{{ file.id }}">{{ file.filename }}</a></td>
                     <td>
-                        <a href="#" class="btn-delete" onclick="return confirm('Are you sure to delete?')">Delete</a>
+                        <a href="{{ url_for('dbModel.delete_file', id=file.id) }}" class="btn-delete" onclick="return confirm('Are you sure to delete?')">Delete</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>File 2</td>
-                    <td>
-                        <a href="#" class="btn-delete" onclick="return confirm('Are you sure to delete?')">Delete</a>
-                    </td>
-                    
-                </tr>
-                <!-- Add more rows for additional files -->
+                {% endfor %}
             </tbody>
         </table>
         <hr>
-        <form class="uploading" method="POST" action="#" enctype="multipart/form-data" id="upload-form">
+        <form class="uploading" method="POST" action="/uploadfile" enctype="multipart/form-data" id="upload-form">
             <label for="formFile" class="programForm">Upload new form file</label>
             
-                <input class="form-submit" type="file" name="form_file" id="formFile" required>
+                <input class="form-submit" type="file" name="file" id="formFile" required>
                 <input class="btn-submit" type="submit" style="float: right;" value="Upload" id="submit-button" onclick="myfunction(); return false;">
         </form>
         
