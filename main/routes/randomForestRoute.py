@@ -16,8 +16,6 @@ model = joblib.load(model_path_cesu)
 def handle_error(e):
     return render_template("error.html"), 500  # You can customize the error page and status code
 
-
-
 def get_current_user():
     if 'user_id' in session:
         # Assuming you have a User model or some way to fetch the user by ID

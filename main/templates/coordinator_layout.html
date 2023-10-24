@@ -10,16 +10,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="/static/css/dashboard.css">
     <link rel="stylesheet" href="/static/css/admin_dashboard.css">
-    <link rel="stylesheet" href="/static/css/programCSVresult.css">
     <link rel="stylesheet" href="/static/css/community.css">
-    <link rel="stylesheet" href="/static/css/manage_account.css">
     <link rel="stylesheet" href="/static/css/coordinator.css">
-    <link rel="stylesheet" href="/static/css/program.css">
     <link rel="stylesheet" href="/static/css/dlfiles.css">
     <link rel="stylesheet" href="/static/css/changepassword.css">
     <link rel="stylesheet" href="static/css/coordinator_dashboard.css">
 
-    
     
 </head>
 <body>
@@ -37,31 +33,18 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="{{ url_for('dbModel.dashboard') }}" class="sidebar-link">
+                <a href="{{ url_for('coordinator.def_coordinator') }}" class="sidebar-link">
                     <span class="material-symbols-sharp">dashboard</span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="{{ url_for('dbModel.manage_community') }} " class="sidebar-link">
-                    <span class="material-symbols-sharp" >groups</span>
-                    <h3>Community</h3>
-                </a>
-                <a href="{{ url_for('dbModel.coordinator') }} " class="sidebar-link">
+                <a href="{{ url_for('coordinator.def_co_project') }} " class="sidebar-link">
                     <span class="material-symbols-sharp">
                         monitoring
                         </span>
                     <h3>Community Projects</h3>
                 </a>
-                <a href="{{ url_for('dbModel.manage_account') }}"class="sidebar-link">
-                    <span class="material-symbols-sharp">manage_accounts</span>
-                    <h3>Manage Account</h3>
-                </a>
-                
-                <a href="{{ url_for('randomForest.program') }}"class="sidebar-link">
-                    <span class="material-symbols-sharp">neurology</span>
-                    <h3>Program Recommendation</h3>
-                </a>
-                <!---------------------------   NEWLY ADDED    -------------------------------->
-                <a href="{{ url_for('dbModel.files') }}"class="sidebar-link">
+                <!---------------------------   NEWLY ADDED FILES    -------------------------------->
+                <a href="{{ url_for('coordinator.co_files') }}"class="sidebar-link">
                     <span class="material-symbols-sharp">
                         folder
                         </span>
@@ -71,7 +54,7 @@
             </div>
         </aside>
         <main>
-            {% block content %}{% endblock %}
+            {% block coordinator %}{% endblock %}
 
             <div class="space" style="margin-top: 5rem;"></div>
         </main>
@@ -92,7 +75,7 @@
                     <div class="profile-photo" id="profile-photo" onclick="toggleDropdown()">
                         <img src="/static/images/CESO.png" alt="">
                         <div class="dropdown-content" id="dropdown-content">
-                            <div class="password-button"><a href="{{ url_for('dbModel.changepass') }}" id="password-button">Change Password</a></div>
+                            <div class="password-button"><a href="{{ url_for('coordinator.def_changepass') }}" id="password-button">Change Password</a></div>
                             <div class="logout-button"><a href="{{ url_for('dbModel.clear_session') }}" id="logout-button">Logout</a></div>
                         </div>
                     </div>
@@ -155,7 +138,7 @@
 <!-- ON CLICK CESU-->
 <script>
     document.getElementById("dashboardLink").addEventListener("click", function() {
-        window.location.href = "{{ url_for('dbModel.dashboard') }}";
+        window.location.href = "{{ url_for('coordinator.def_coordinator') }}";
     });
 </script>
 </body>

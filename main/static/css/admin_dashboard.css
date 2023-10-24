@@ -312,11 +312,41 @@ main{
 }
 .logout-button a{
     text-decoration: none;
+    color: #000000;
 }
 
 .logout-button:hover {
-    background-color: #f0efef;
+    background-color: #087830;
+    color: #ffffff;
+    transition: background-color 0.35s;
 }
+
+.logout-button a:hover {
+    color: #ffffff;
+}
+
+.password-button {
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+    border-radius: 0.3rem;
+    text-decoration: none;
+}
+.password-button a{
+    text-decoration: none;
+    color: #000000;
+
+}
+
+.password-button:hover {
+    background-color: #087830;
+    color: #ffffff;
+    transition: background-color 0.35s;
+}
+.password-button a:hover {
+    color: #ffffff;
+}
+
 
 .theme-toggler{
     display: none;

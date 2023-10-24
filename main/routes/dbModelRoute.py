@@ -21,12 +21,17 @@ def login():
             # Store the user's ID in the session to keep them logged in
             session['user_id'] = user.id
             flash('Login successful!', 'success')
-            return redirect(url_for('dbModel.dashboard'))
+            # -if role == 1 go to ADMIN page. if == 0 go coordinator page else error------------------
+            if user.role == 'Admin': #Admin
+                return redirect(url_for('dbModel.dashboard'))
+            else:      #------------------------- COORDINATOR PAGE ---------------------
+                return redirect(url_for('coordinator.def_coordinator'))
         else:
             flash('Invalid username or password. Please try again.', 'error')
-        
-
     return render_template("login.html")
+
+
+# ADMIN SESSION
 @dbModel_route.route("/admin_dashboard")
 def dashboard():
      # Check if the user is logged in
@@ -65,6 +70,7 @@ def programCSVresult():
         flash('Please log in first.', 'error')
         return redirect(url_for('dbModel.login'))
     return redirect(url_for('randomForest.programOneRow'))
+
 
 #FOR USER CRUD
 
@@ -171,7 +177,7 @@ def delete_account(id):
 
 
 
-##################  FOR COORDINATOR  #######################
+##################  FOR COMMUNITY PROJECT  #######################
 @dbModel_route.route("/coordinator")
 def coordinator():
     if 'user_id' not in session:
