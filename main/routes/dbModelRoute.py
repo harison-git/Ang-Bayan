@@ -413,3 +413,12 @@ def delete_file(id):
     else:
         flash('User not found. Please try again.', 'error')
     return redirect(url_for('dbModel.files'))
+
+
+#--------------------CHANGE PASSWORD ---------------
+@dbModel_route.route('/changepassword')
+def changepass():
+    if 'user_id' not in session:
+        flash('Please log in first.', 'error')
+        return redirect(url_for('dbModel.login'))
+    return render_template('changepassword.html')
