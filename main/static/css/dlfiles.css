@@ -36,6 +36,9 @@ main .file-container{
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
     padding-bottom: 2.5rem;
+    position: relative;
+    overflow-x: auto; /* Horizontal scroll if needed */
+    max-height: 350px; /* Set a maximum height for vertical scroll */
  
 }
 hr{
@@ -50,7 +53,7 @@ hr{
     margin-top: 100rem;
 }
 
-.title{
+.title1{
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
@@ -77,10 +80,11 @@ main .file-container:hover{
 
  .file-container table td {
     height: 2.8rem; 
-    text-align: center;
+    text-align: left;
 }
 .file-container table{
     width: 100%;
+    
 }
 
 /* DELETE */
@@ -98,15 +102,39 @@ main .file-container:hover{
     background-color: #ff3333; /* Red background color on hover */
 }
 
+
+.upfiles{
+    margin-top: 1rem;
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    padding-bottom: 2.5rem;
+    position: relative;
+    height: 5rem; /* Set a maximum height for vertical scroll */
+}
+
+ .title1{
+    background-color: #087830;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex; /* Use flexbox to control alignment */
+    align-items: center; /* Vertically center the content */
+    justify-content: flex-start; /* Align content to the start */
+}
+
 /* upload BUTTON */
-.file-container .btn-submit{
+.upfiles .btn-submit{
     background-color: #49a14f;
     color: #fff;
     padding: 4px 6px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 3.7rem;
+    position: absolute;
+    right: 2rem;
 }
 
 .file-container .btn-submit:hover{

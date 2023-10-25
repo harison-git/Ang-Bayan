@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_bootstrap import Bootstrap
 from flask_migrate import Migrate
 
 
@@ -8,7 +7,7 @@ from flask_migrate import Migrate
 custom_static_url_path = '/static'
 
 app = Flask(__name__, static_url_path=custom_static_url_path)
-bootstrap = Bootstrap(app)
+
 app.secret_key = 'your_secret_key'  # Set a secret key for session management
 
 # Configure the database connection for SQLite

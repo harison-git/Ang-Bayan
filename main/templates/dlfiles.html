@@ -1,7 +1,7 @@
 {% extends "admin_dashboard.html" %}
 {% block content %}
 
-<h1 class="title">
+<h1 class="title1">
     Community Extension Files
 </h1>
 <div class="file-container">
@@ -24,13 +24,14 @@
             </tbody>
         </table>
         <hr>
-        <form class="uploading" method="POST" action="/uploadfile" enctype="multipart/form-data" id="upload-form">
-            <label for="formFile" class="programForm">Upload new form file</label>
-            
-                <input class="form-submit" type="file" name="file" id="formFile" required>
-                <input class="btn-submit" type="submit" style="float: right;" value="Upload" id="submit-button" onclick="myfunction(); return false;">
-        </form>
+</div>
+<div class="upfiles">
+    <form class="uploading" method="POST" action="/uploadfile" enctype="multipart/form-data" id="upload-form">
+        <label for="formFile" class="programForm">Upload new form file</label>
         
+            <input class="form-submit" type="file" name="file" id="formFile" required>
+            <input class="btn-submit" type="submit" style="float: right;" value="Upload" id="submit-button" onclick="myfunction(); return false;">
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -92,8 +92,8 @@
                     <div class="profile-photo" id="profile-photo" onclick="toggleDropdown()">
                         <img src="/static/images/CESO.png" alt="">
                         <div class="dropdown-content" id="dropdown-content">
-                            <div class="password-button"><a href="{{ url_for('dbModel.changepass') }}" id="password-button">Change Password</a></div>
-                            <div class="logout-button"><a href="{{ url_for('dbModel.clear_session') }}" id="logout-button">Logout</a></div>
+                            <div class="password-div"><a class="password-button"  href="{{ url_for('dbModel.changepass') }}" id="password-button">Change Password</a></div>
+                            <div class="logout-hover"><a class="logout-button" href="{{ url_for('dbModel.clear_session') }}" id="logout-button">Logout</a></div>
                         </div>
                     </div>
                 </div>
